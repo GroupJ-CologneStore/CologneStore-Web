@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CologneStore.DTO.StockDisplayModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    /* Custom styles for the stock table */
+    .table th, .table td {
+        vertical-align: middle; /* Align content vertically in the center */
+    }
+
+    .table tbody tr {
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+    }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa; /* Light gray background on hover */
+        }
+
+    .table td {
+        padding: 1.5rem; /* Add padding for better spacing */
+    }
+</style>
+
+<div>
+    <div class="d-flex justify-content-center align-items-center" style="font-weight: bold; text-align: center; width: 100%;">
+        <h2>Stock</h2>
+        <form asp-action="Index" method="get" class="my-3 gap-2">
+            <input type="text" name="sTerm" class="form-control w-25" placeholder="Search cologne" />
+            <button type="submit" class="btn btn-primary">Find</button>
+            <a asp-action="Index" asp-controller="Stock" class="adminBtn">Reset</a>
+        </form>
+    </div>
+    
+
+    @if (Model?.Any() == true) // Check if there are any items to display
+    {
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Cologne</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CologneName</td>
+                        <td>@item.Quantity</td>
+                        <td>
+                            <a asp-action="ManageStock" asp-controller="Stock" asp-route-cologneId="@item.CologneId" class="adminBtn">
+                                Update Stock
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="py-1"></td> <!-- Adds spacing below each item -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            No stock available.
+        </div>
+    }
+</div>

@@ -1,0 +1,42 @@
+﻿@model List<ItemModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="d-flex justify-content-center align-items-center" style="font-weight: bold; text-align: center; width: 100%;">Orders</h2>
+
+<!-- Table container with centered layout -->
+<div style="max-width: 1000px; margin: 0 auto;">
+    <table class="table table-bordered" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead style="background-color: #f0f0f0;">
+            <tr style="border-bottom: 2px solid #ddd;">
+                <th style="padding: 12px;">Name</th>
+                <th style="padding: 12px;"></th>
+                <th style="padding: 12px;">Price</th>
+                <th style="padding: 12px;">Cologne</th>
+                <th style="padding: 12px;">Delivery for</th>
+                <th style="padding: 12px;">Delivery to</th>
+                <th style="padding: 12px;">Payment Method</th>
+                <th style="padding: 12px;">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="border-bottom: 1px solid #e5e5e5;">
+                    <td style="padding: 12px; vertical-align: middle;">@item.Name</td>
+                    <td style="padding: 12px; vertical-align: middle;">@item.Brand</td>
+                    <td style="padding: 12px; vertical-align: middle;">R @item.Price</td>
+                    <td style="padding: 12px; vertical-align: middle;">
+                        <img src="@item.Image" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;" alt="@item.Name" />
+                    </td>
+                    <td style="padding: 12px; vertical-align: middle;">@item.FirstName @item.LastName</td>
+                    <td style="padding: 12px; vertical-align: middle;">@item.Address</td>
+                    <td style="padding: 12px; vertical-align: middle;">@item.PaymentMethod</td>
+                    <td style="padding: 12px; vertical-align: middle;">@item.Date</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

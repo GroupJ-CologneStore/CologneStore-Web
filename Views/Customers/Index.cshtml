@@ -1,0 +1,48 @@
+﻿@model List<CustomerModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    /* Custom styles for the stock table */
+    .table th, .table td {
+        vertical-align: middle; /* Align content vertically in the center */
+    }
+
+    .table tbody tr {
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+    }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa; /* Light gray background on hover */
+        }
+
+    .table td {
+        padding: 0.5rem; /* Add padding for better spacing */
+    }
+</style>
+
+<h2 style="font-weight: bold; text-align: center; width: 100%;">Customers</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Full name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.ID</td>
+            </tr>
+        }
+    </tbody>
+</table>

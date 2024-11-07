@@ -1,0 +1,75 @@
+﻿.prod-nav {
+    display: flex;
+    justify-content: end;
+    gap: 1em;
+    font-size: 0.8em;
+}
+
+    .prod-nav button {
+        color: white;
+        background-color: black;
+        border-radius: 0.2em;
+        border: none;
+        cursor:pointer;
+    }
+
+    .prod-nav .form-control {
+        border: 1px solid black;
+    }
+
+    .prod-nav a {
+        color: black;
+        cursor: pointer;
+        padding-right: 1em;
+    }
+
+.topad {
+}
+
+    .topad .maintext {
+        margin-top: 1.1em;
+        font-size: 1.4em;
+        font-weight: 400;
+        margin-bottom: 0;
+        line-height:0.9em;
+    }
+
+    .topad .subtext {
+      
+        font-weight: 250;
+        margin-top: 0;
+        font-size: 0.9em;
+    }
+
+
+.cologne {
+    border: 1px solid #c2a77c;
+    text-align: center;
+    margin-top: 0;
+    font-size: 0.8em;
+}
+
+    .cologne img {
+        border-bottom: 1px solid #c2a77c;
+    }
+
+    .cologne button {
+        padding: 0.5em;
+        margin-bottom: 1em;
+        border: 1px solid #c2a77c;
+        cursor: pointer;
+        transition:1s;
+    }
+
+        .cologne button:hover {
+            background-color: #c2a77c;
+            color: white;
+        }
+
+hr {
+    border: 1px solid #c2a77c;
+}
+.prod-container{
+    display:grid;   
+    grid-template-columns:repeat(4,0fr);
+}

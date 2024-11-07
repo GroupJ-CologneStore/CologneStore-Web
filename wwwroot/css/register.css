@@ -1,0 +1,79 @@
+﻿.regCols {
+    display: flex;
+    height: 90vh;
+    text-align: center;
+}
+
+.form-check-input {
+    width: 1em;
+    height: 1em;
+}
+
+.regColRight {
+    flex: 1;
+    border-bottom-left-radius: 1em;
+    border-top-left-radius: 1em;
+    align-content: center;
+}
+
+    .regColRight h1 {
+        text-transform: uppercase;
+        font-size: 1.9em;
+    }
+    .regColRight h2{
+        font-size:1em;
+    }
+
+    .regColRight .form-control {
+        border: 1px solid #808080;
+        width: 30em;
+        height: 4em;
+        text-align: center;
+        border-radius: 1em;
+        background-color:#dbefea;
+        color: black;
+    }
+
+    .regColRight a {
+        color: black;
+        font-size: 0.8em;
+    }
+
+
+    .regColRight .checkbox {
+        font-size: 0.8em;
+        margin-top: 1em;
+    }
+
+    .regColRight button {
+        width: 10em;
+        height: 3em;
+        border: none;
+        background-color: black;
+        color: white;
+        border-radius: 1em;
+        margin: 1em 0 1em 0;
+        cursor: pointer;
+    }
+
+.regColLeft {
+    flex: 1;
+    background-color: #93b557;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    align-content: center;
+}
+
+    .regColLeft h1 {
+        background-color: #93b557;
+        color: white;
+        font-size: 2.4em;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .regColLeft p {
+        background-color: #93b557;
+        color: white;
+        font-size: 1.1em;
+    }

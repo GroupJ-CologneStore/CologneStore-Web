@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Montréal Odör </title>
+    <link href="~/css/landing.css" rel="stylesheet" />
+    <link href="~/css/home.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+    <link href="~/css/register.css" rel="stylesheet" />
+    <link href="~/css/misc.css" rel="stylesheet" />
+    <link href="~/css/products.css" rel="stylesheet" />
+    <link href="~/css/cart.css" rel="stylesheet" />
+    <link href="~/css/admin.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Montréal Odör</a>
+            </div>
+
+            <ul class="navbar-nav flex-grow-1">
+
+                @if(ViewData["Title"] == "Index")
+                {
+                    @if (User.IsInRole(CologneStore.Constants.Roles.User.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                        </li>
+                    }
+                    @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Products">PRODUCTS</a>
+                        </li>
+                    }
+                    @if (User.IsInRole(CologneStore.Constants.Roles.User.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="GetUserCart">CART</a>
+                        </li>
+                    }
+
+                    @if (User.IsInRole(CologneStore.Constants.Roles.User.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/UserOrder/UserOrders">MY ORDERS</a>
+                        </li>
+                    }
+                    @if (User.IsInRole(CologneStore.Constants.Roles.User.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Review/Index">REVIEWS</a>
+                        </li>
+                    }
+
+                    @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Items" asp-action="Index">ORDERS</a>
+                        </li>
+                    }
+                   @*  @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Type" asp-action="Index">Types</a>
+                        </li>
+                    } *@
+                    @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cologne" asp-action="Index">Add Colognes</a>
+                        </li>
+                    }
+                    @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Stock" asp-action="Index">Stock</a>
+                        </li>
+                    }
+                    @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a>
+                        </li>
+                    }
+                    @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
+                        </li>
+                    }
+                   
+                }
+              
+                @if (User.IsInRole(CologneStore.Constants.Roles.Company.ToString()))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Company" asp-action="GetCompanies">Company verification</a>
+                    </li>
+                }
+                
+                
+            </ul>
+            <div>
+                <partial name="_LoginPartial" />
+            </div>
+
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="my-2">
+                <partial name="_Notifications" />
+            </div>
+            @RenderBody()
+        </main>
+    </div>
+
+   
+    <script src="~/js/site.js" ></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CologneStore.Models.Company>
+
+<div style="text-align: center; width: 100%;">
+    @if (Model?.Count() > 0)
+    {
+        ViewData["Title"] = "Index";
+
+        <h1>Your company is verified!</h1>
+        <hr />
+        <br />
+
+        <div class="d-flex justify-content-center" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; justify-items: center;">
+            @foreach (var item in Model)
+            {
+                <div class="py-5" style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h3>@item.CompanyName</h3>
+                    <p><strong>Registration Number:</strong> @item.RegistrationNumber</p>
+                    <p><strong>Company Address:</strong> @item.CompanyAddress</p>
+                    <img src="@item.CIPCImage" style="width: 100%; height: auto; max-width: 400px; border-radius: 4px;" alt="CICP image" />
+                </div>
+                <div></div>
+                <div>
+                    <img src="https://img.freepik.com/premium-vector/vector-guy-expressing-thumbs-up_995281-3318.jpg" />
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div>
+            <h1>Your Company is not verified!</h1>
+            <div>
+                <form>
+                    <button type="submit" asp-controller="Company" asp-action="Create">Verify company</button>
+                </form>
+            </div>
+        </div>
+        <br /><br />
+        <div>
+            <img src="https://media.istockphoto.com/id/1320033559/vector/pensive-man-standing-and-making-business-decision-isolated-flat-vector-illustration-cartoon.jpg?s=612x612&w=0&k=20&c=CwX0Ryk_gJVFXcsIHTsMjZX4jRMt4L0CrMPnDjXHlPo=" style="opacity:0.6"/>
+        </div>
+    }
+</div>

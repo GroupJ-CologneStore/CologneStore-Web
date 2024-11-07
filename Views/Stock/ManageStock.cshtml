@@ -1,0 +1,30 @@
+﻿@model CologneStore.DTO.StockDTO
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<div>
+	<div class="d-flex justify-content-center align-items-center" style="font-weight: bold; text-align: center; width: 100%;">
+	<h2>Manage stock</h2>
+
+	<a asp-action="Index" asp-controller="Stock" class="btn adminBtn">Back</a><br /><br />
+	</div>
+
+	<br />
+	<br />
+
+	<form asp-action="ManageStock" class="col-md-4">
+		<input type="hidden" asp-for="CologneId" />
+
+		<div class="my-2">
+			<label>Quantity</label><br />
+			<input type="number" class="form-control" asp-for="Quantity" /><br />
+			<span asp-validation-for="Quantity" class="text-danger"></span><br />
+		</div>
+
+		<div class="my-2">
+			<button type="submit" class="btn btn-info">Update</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,68 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+<div class="regCols">
+    <div class="regColLeft">
+        <h1>HELLO THERE!</h1>
+        <p>
+            This marks the beginning to a more fragrant journey.<br />          
+        </p>
+        
+    </div>
+    <div class="regColRight">
+        <h1>@ViewData["Title"]</h1>
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Create a new account.</h2>           
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <label asp-for="Input.Email">Email</label><br />
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" /><br />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div><br /><br />
+            <div class="form-floating mb-3">
+                <label asp-for="Input.Password">Password</label><br />
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" /><br />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div><br /><br />
+            <div class="form-floating mb-3">
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label><br />
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="confirm password" /><br />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+           @*  <br />
+            <br />
+            <div class="form-floating mb-3">
+                <label asp-for="Input.RegsitrationNumber">Registration Number</label><br />
+                <input asp-for="Input.RegsitrationNumber" class="form-control" autocomplete="new-password" aria-required="true" placeholder="confirm password" /><br />
+                <span asp-validation-for="Input.RegsitrationNumber" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-floating mb-3">
+                <label asp-for="Input.CompanyAddress">Company Address</label><br />
+                <input asp-for="Input.CompanyAddress" class="form-control" autocomplete="new-password" aria-required="true" placeholder="confirm password" /><br />
+                <span asp-validation-for="Input.CompanyAddress" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="my-2">
+                <label>Upload CIPC Verification Certificate:</label>
+                <br />
+                <br />
+                <input type="file" asp-for="Input.ImageFile" />
+            </div>
+           <br />
+           <br /> *@
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

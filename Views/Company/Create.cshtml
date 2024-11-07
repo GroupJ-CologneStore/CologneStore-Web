@@ -1,0 +1,61 @@
+﻿@model CologneStore.DTO.CompanyDTO
+
+<h1 style="text-align: center; width: 100%;">Verify your company</h1>
+
+<hr />
+<br />
+<div class="row">
+    <br />
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CompanyName" class="control-label">Company Name:</label>
+                <br />
+                <br />
+                <input asp-for="CompanyName" class="form-control" />
+                <br />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="RegistrationNumber" class="control-label">Registration Number:</label>
+                <br />
+                <br />
+                <input asp-for="RegistrationNumber" class="form-control" />
+                <br />
+                <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="CompanyAddress" class="control-label">Company Address:</label>
+                <br />
+                <br />
+                <input asp-for="CompanyAddress" class="form-control" />
+                <br />
+                <span asp-validation-for="CompanyAddress" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="my-2">
+                <label>Upload CIPC Verification Certificate:</label>
+                <br />
+                <br />
+                <input type="file" asp-for="ImageFile" />
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Verify" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

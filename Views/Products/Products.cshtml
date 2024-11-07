@@ -1,0 +1,79 @@
+﻿@model CologneStore.DTO.CologneDisplayModel;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Products" class="prod-nav">
+    <div class="col-12">
+        <input type="text" class="form-control" id="sTerm" name="sTerm" placeholder="Search title">
+    </div>
+
+    <div class="col-12">
+        <select class="form-select" id="typeId" name="typeId">
+            <option selected>Type</option>
+            @foreach (var type in Model.Types)
+            {
+                <option value="@type.Id">@type.TypeName</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-12">
+        <select class="form-select" id="cologneForId" name="cologneForId">
+            <option selected>For</option>
+            @foreach (var cologneFor in Model.ColognesFor)
+            {
+                <option value="@cologneFor.Id">@cologneFor.CologneForName</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" id="" class="btn btn-primary">Search</button>
+        <a href="/Products/Products" class="btn btn-dark">Reset</a>
+    </div>
+</form>
+
+<br />
+
+<!-- Product grid container -->
+<div class="prod-container" style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+    @foreach (var cologne in Model.Colognes)
+    {
+        <div class="product-card" style="width: 15rem; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
+            @if (string.IsNullOrEmpty(cologne.CologneImage))
+            {
+                <img style="width:100%; height:150px; object-fit:cover;" src="/images/default.jpg" alt="Cologne image" />
+            }
+            else
+            {
+                <img style="width:100%; height:150px; object-fit:cover;" src="@cologne.CologneImage" alt="Cologne image" />
+            }
+
+            <div class="card-body">
+                <p class="card-text">
+                    <strong>@cologne.CologneMakerName</strong>
+                    <br />
+                    R @cologne.Price
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        async function add(cologneId) {
+            try {
+                var response = await fetch(`/Cart/AddItem?cologneId=${cologneId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+                    alert("Item successfully added to cart");
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+}
